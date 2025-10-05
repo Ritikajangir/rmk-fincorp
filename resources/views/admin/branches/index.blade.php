@@ -23,13 +23,14 @@
 <div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <form id="addBranchForm">
+      <input type="hidden" id="branch_id" name="branch_id" value="">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="addBranchModalLabel">Add Branch</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            @csrf <!-- Add CSRF token -->
+            @csrf
             <div class="mb-3">
                 <label for="branchName" class="form-label">Name<span class="mailstar" style="color: red;">*</span></label>
                 <input type="text" class="form-control" id="branchName" name="name" required placeholder="Enter Name">
@@ -41,16 +42,35 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Branch</button>
+          <button type="submit" class="btn btn-primary submit-btn" id="saveBranchBtn">Save Branch</button>
         </div>
       </div>
     </form>
   </div>
 </div>
+<!-- Branch Details Modal -->
+<div class="modal fade" id="branchDetailsModal" tabindex="-1" aria-labelledby="branchDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="branchDetailsLabel">Branch Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Name:</strong> <span id="branchNameShow"></span></p>
+        <p><strong>Address:</strong> <span id="branchAddressShow"></span></p>
+        <p><strong>Created At:</strong> <span id="branchCreatedAt"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @section('scripts')
-@parent
 {!! $dataTable->scripts() !!}
 <script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 <script type="text/javascript">
@@ -61,8 +81,8 @@
         var url = $(this).attr('action');
     
         swal.fire({
-            title: "{{ trans('global.areYouSure') }}",
-            text: "{{ trans('global.onceClickedRecordDeleted') }}",
+            title: "Are You Sure?",
+            text: "Once deleted, this record cannot be restored",
             icon: 'question',
             type: "warning",
             showCancelButton: !0,
@@ -78,12 +98,10 @@
                     dataType: 'JSON',
                     success: function (response) {
                         if (response.success == true) {
-                            fireSuccessSwal('Success',response.message);
-                            setTimeout(function(){
-                                location.reload();
-                            },1000);
+                            toastr.success(response.message, 'Success!');
+                            $('#branches-table').DataTable().ajax.reload();
                         } else {
-                            fireErrorSwal('Error',response.message);
+                            toastr.error(response.message, 'Error!');
                         }
                     }
                 });
@@ -94,11 +112,29 @@
         });
     });
 
-    $('#addBranchBtn').click(function() {
-        $('#addBranchModal').modal('show');
+    $(document).on('shown.bs.modal', '#addBranchModal', function () {
+        $('#branchName').focus();
+    });
+
+    $(document).on('click', '#addBranchBtn, .editBranchBtn', function(){
         $('#addBranchForm')[0].reset();
         $('#addBranchForm').validate().resetForm();
-        $('#addBranchForm input').removeClass('is-invalid');
+        $('#addBranchForm input, #addBranchForm textarea').removeClass('is-invalid');
+        $('#addBranchModal').modal('show');
+    });
+
+    $('#addBranchBtn').click(function() {
+        $('#branch_id').val('');
+        $('#addBranchModalLabel').text('Add Branch');
+        $('.submit-btn').text('Save Branch');
+    });
+
+    $(document).on('click', '.editBranchBtn', function() {
+        $('#branch_id').val($(this).attr('data-id'));
+        $('#branchName').val($(this).attr('data-name'));
+        $('#branchAddress').val($(this).attr('data-address'));
+        $('#addBranchModalLabel').text('Edit Branch');
+        $('.submit-btn').text('Update Branch');
     });
 
     $('#addBranchForm').validate({
@@ -138,14 +174,16 @@
         e.preventDefault();
         $('body').find('.contactError').remove();
         if($(this).valid()){
+            var url = $('#branch_id').val() ? ('{{ route("admin.branch.update", "__ID__") }}').replace('__ID__', $('#branch_id').val()) : '{{ route("admin.branch.store") }}';
             $.ajax({
-                url: '{{ route("admin.branch.store") }}',
-                method: 'POST',
+                url: url,
+                method: $('#branch_id').val() ? 'PUT' : 'POST',
                 data: $(this).serialize(),
                 beforeSend: function() {
                     $('#saveBranchBtn').attr('disabled', true);
                 },
                 success: function(response) {
+                    toastr.success(response.message, 'Success!');
                     $('#addBranchModal').modal('hide');
                     $('#branches-table').DataTable().ajax.reload();
                 },
@@ -162,6 +200,13 @@
                 }
             });
         }
+    });
+
+    $(document).on('click', '.show-branch-btn', function () {    console.log($(this).attr('data-name'));
+        $('#branchNameShow').text($(this).attr('data-name'));
+        $('#branchAddressShow').text($(this).attr('data-address'));
+        $('#branchCreatedAt').text($(this).attr('data-created_at'));
+        $('#branchDetailsModal').modal('show');
     });
   });
 </script>

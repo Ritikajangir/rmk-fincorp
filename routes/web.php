@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\PageController;
 
 Route::get('/', function () {
     return view('home');
@@ -15,6 +16,7 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+Route::post('/contact-submit', [HomeController::class, 'submitContact'])->name('contact.submit');
 Route::get('/charges', [HomeController::class, 'services'])->name('charges');
 Route::get('/terms-conditions', [HomeController::class, 'termConditions'])->name('term-conditions');
 
@@ -33,5 +35,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['middleware' => ['auth.admin','preventBackHistory']], function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('home');
         Route::resource('branch', BranchController::class);
+        Route::resource('page', PageController::class);
     });
 });

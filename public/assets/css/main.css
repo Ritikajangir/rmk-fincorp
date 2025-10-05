@@ -1050,7 +1050,7 @@ section:not(:first-of-type){
 /*----------- Footer Start -----------*/
 .footer-main{
     background: var(--footer);
-    padding-top: 100px;
+    /* padding-top: 100px; */
 }
 .footer-main .global-heading h3 {
     margin-bottom: 18px;
@@ -1914,23 +1914,3 @@ textarea.form-control {
 .darkicon img {
     filter: invert(100%) sepia(91%) saturate(32%) hue-rotate(199deg) brightness(140%) contrast(109%);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

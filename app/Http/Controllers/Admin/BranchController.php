@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\DataTables\BranchDataTable;
+use Illuminate\Validation\Rule;
 
 class BranchController extends Controller
 {
@@ -24,9 +25,15 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'    => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('branches')->whereNull('deleted_at'),
+            ],
             'address' => 'required|string',
         ]);
+
 
         if ($validator->fails()) {
             return response()->json([
@@ -44,29 +51,48 @@ class BranchController extends Controller
 
     public function show(Branch $branch)
     {
-        return view('branches.show', compact('branch'));
+        abort(404);
     }
 
     public function edit(Branch $branch)
     {
-        return view('branches.edit', compact('branch'));
+        abort(404);
     }
 
     public function update(Request $request, Branch $branch)
     {
-        $request->validate([
-            'name'    => 'required|string|max:255',
-            'address' => 'required|string|max:255',
+        $validator = Validator::make($request->all(), [
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('branches')
+                    ->ignore($branch->id)
+                    ->whereNull('deleted_at'),
+            ],
+            'address' => 'required|string',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
 
         $branch->update($request->only('name', 'address'));
 
-        return redirect()->route('branches.index')->with('success', 'Branch updated successfully.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Branch updated successfully.',
+        ]);
     }
 
     public function destroy(Branch $branch)
     {
         $branch->delete();
-        return redirect()->route('branches.index')->with('success', 'Branch deleted successfully.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Branch deleted successfully.',
+        ]);
     }
 }

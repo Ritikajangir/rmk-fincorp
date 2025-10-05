@@ -1,24 +1,6 @@
 <!-- Footer -->
 	<footer class="footer-main">
 		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-12 col-lg-12 col-xl-8">
-					<div class="global-heading center">
-						<span class="heading-sub-title">Newsletter</span>
-						<h3>Subsribe To Get Newsletter</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-					</div>
-					<form class="subscription-email">
-						<input type="text" name="" class="form-control" placeholder="Enter Your Email">
-						<a class="btn btn-primary" href="#">Subscribe
-				          	<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1 8H18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-								<path d="M11 1L18 8L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-							</svg>
-						</a>
-					</form>
-				</div>
-			</div>
 			<div class="footer-middle mt-60">
 				<div class="row">
 					<div class="col-12 col-lg-12 col-xl-5">

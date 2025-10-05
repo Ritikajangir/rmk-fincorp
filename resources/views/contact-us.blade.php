@@ -52,201 +52,63 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
+				@foreach($branches as $branch)
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class="contact-us-grid">
+							<div class="inner-box-light">
+								<div class="contact-media-icon">
+									<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</div>
+								<div class="contact-subtitle text-gradient-primary">{{$branch->name}}</div>
+								<address>{{$branch->address}}</address>
 							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location</div>
-							<address>RMK Fincorp, Near SBI Bank, Station Road, Chirawa, Rajasthan 333026</address>
 						</div>
 					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Gil bhawan , Road no.- 3, Jhunjhunu, Raj - 333001</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Hotel Nawalgarh plaza near bus depo, Raj - 333042</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Singhana, Jhunjhun, Raj - 333516</address>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Near P.N. palace gopeshawar basti, Bikaner, Raj - 334001</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>SK enterprisees Rajgarh road Near bus stand, Jhunjhun, Raj - 333025</address>
-						</div>
-					</div>
-				</div>
-				
-				
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Build of chndra jangid, Near SBI bank, Surajgarh, Jhunjhun, Raj - 333029</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Ground floor ram ji tower jasinghpura road, Bhakrota, Jaipur, Raj - 302026</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>1-st floor, Near electric power house, Bus stand, Sadulpur, Jhunjhun, Raj - 331023</address>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 col-lg-4">
-					<div class="contact-us-grid">
-						<div class="inner-box-light">
-							<div class="contact-media-icon">
-								<svg width="23" height="28" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M15.7273 8.36364C15.7273 14.0909 8.36364 19 8.36364 19C8.36364 19 1 14.0909 1 8.36364C1 6.41068 1.77581 4.53771 3.15676 3.15676C4.53771 1.77581 6.41068 1 8.36364 1C10.3166 1 12.1896 1.77581 13.5705 3.15676C14.9515 4.53771 15.7273 6.41068 15.7273 8.36364Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M8.36373 10.8183C9.71933 10.8183 10.8183 9.71933 10.8183 8.36373C10.8183 7.00812 9.71933 5.90918 8.36373 5.90918C7.00812 5.90918 5.90918 7.00812 5.90918 8.36373C5.90918 9.71933 7.00812 10.8183 8.36373 10.8183Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</div>
-							<div class="contact-subtitle text-gradient-primary">Our Location	</div>
-							<address>Shop no - 36, Gudha Big Bazar 1-st floor near Bus Stand, Gudha Gorji, Jhunjhun, Raj - 333012</address>
-						</div>
-					</div>
-				</div>
+				@endforeach
 				
 			</div>
 			<div class="get-in-touch mt-60">
 				<div class="global-heading">
-					<span class="heading-sub-title text-gradient-primary">Newsletter</span>
+					<span class="heading-sub-title text-gradient-primary">Contact Form</span>
 					<h3>Get in Touch!</h3>
 				</div>
-				<form>
+				<form method="POST" id="contact-form">
+					@csrf
 					<div class="row">
-						<div class="col-12 col-lg-3">
+						<div class="col-12 col-lg-4">
 							<div class="form-group">
-								<input type="text" name="" class="form-control" placeholder="Enter your Name">
+								<input type="text" name="name" class="form-control" placeholder="Enter your Name">
 								<span class="icon-fix"><img src="{{asset('assets/images/user-dark.svg')}}" alt="" /></span>
 							</div>
 						</div>
-						<div class="col-12 col-lg-3">
+						<div class="col-12 col-lg-4">
 							<div class="form-group">
-								<input type="text" name="" class="form-control" placeholder="Enter your email">
+								<input type="text" name="email" class="form-control" placeholder="Enter your email">
 								<span class="icon-fix"><img src="{{asset('assets/images/envelope-dark.svg')}}" alt="" /></span>
 							</div>
 						</div>
-						<div class="col-12 col-lg-3">
+						<div class="col-12 col-lg-4">
 							<div class="form-group">
-								<input type="text" name="" class="form-control" placeholder="Enter your Phone">
+								<input type="text" name="number" class="form-control" placeholder="Enter your Phone">
 								<span class="icon-fix"><img src="{{asset('assets/images/call-us-dark.svg')}}" alt="" /></span>
-							</div>
-						</div>
-						<div class="col-12 col-lg-3">
-							<div class="form-group">
-								<select class="form-control">
-									<option>Subject</option>
-									<option>Subject</option>
-									<option>Subject</option>
-									<option>Subject</option>
-									<option>Subject</option>
-								</select>
-								<span class="icon-fix"><img src="{{asset('assets/images/arrow-dark-down.svg')}}" alt="" /></span>
 							</div>
 						</div>
 						<div class="col-12 col-lg-12">
 							<div class="form-group">
-								<textarea class="form-control" placeholder="Type Massage"></textarea>
+								<textarea class="form-control" placeholder="Type Massage" name="message"></textarea>
 							</div>
 						</div>
 						<div class="col-12 col-lg-3">
 							<div class="submit-btn">
-								<a class="btn btn-primary" href="#">Submit
+								<button type="submit" id="contact-form-submit-btn" class="btn btn-primary">Submit
 						          	<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M1 8H18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 										<path d="M11 1L18 8L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 									</svg>
-								</a>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -261,4 +123,80 @@
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.2254753432344!2d0.18640387702700137!3d51.63739570119786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8bc9d56015ac3%3A0x410518a540ecad2e!2sGranite%20Supply%20UK%20Ltd!5e0!3m2!1sen!2sin!4v1684497120581!5m2!1sen!2sin" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</section>
 	<!-- Contact map End -->
+@endsection
+@section('scripts')
+<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+<script>
+	$(document).ready(function(){
+		$('#contact-form').validate({
+			rules: {
+				name: {
+					required: true,
+					maxlength: 255
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				number: {
+					required: true,
+					digits: true
+				},
+				message: {
+					required: true,
+					minlength: 5
+				}
+			},
+			errorClass: 'is-invalid',
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				error.insertAfter(element);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass(errorClass).removeClass(validClass);
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass(errorClass).addClass(validClass);
+			}
+		});
+
+		$(document).on('submit', '#contact-form', function(e){ 
+			e.preventDefault();
+			$('.contactError').remove();
+			if($(this).valid()){
+				let form = $(this);
+				let formData = form.serialize();
+
+				$.ajax({
+					url: "{{ route('contact.submit') }}",
+					method: "POST",
+					data: formData,
+					beforeSend: function(){
+						$('#contact-form-submit-btn').attr('disabled', true);
+					},
+					success: function(response) {
+						toastr.success(response.message, 'Success!');
+						form[0].reset();
+					},
+					error: function(xhr) {
+						let errors = xhr.responseJSON?.errors;
+						if (errors) {
+							$.each(errors, function(key, value) {                        
+								var $field = $('[name="' + key + '"]');
+								$field.addClass('is-invalid');
+								$field.after('<span class="text-danger contactError"> ' + value  + '</span>');
+							});
+						} else {
+							toastr.error(response.message, 'Error!');
+						}
+					},
+					complete: function() {
+						$('#contact-form-submit-btn').prop('disabled', false);
+					}
+				});
+			}
+		});
+	});
+</script>
 @endsection

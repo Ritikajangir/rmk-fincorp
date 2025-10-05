@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="{{asset('assets/datatables/jquery.dataTables.min.css')}}">
 	<!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+	<!-- toastr css -->
+    <link rel="stylesheet" href="{{asset('assets/toastr/toastr.min.css')}}">
 	<!-- Style css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" async>
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
-
+	@yield('style')
 </head>
 <body class="admin-dashboard">
 
@@ -27,6 +29,7 @@
 					<ul class="nav-items">
 						<li><a href="dashboard.html" title="Dashboard" class="active"><div class="menu-img"><img src="{{asset('assets/images/dashaboard.svg')}}" alt="Dashboard"></div>Dashboard</a></li>
 						<li><a href="{{route('admin.branch.index')}}" title="Branches"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Branches"></div>Branches</a></li>
+						<li><a href="{{route('admin.pages.index')}}" title="Pages"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Pages"></div>Pages</a></li>
 						<li><a href="javascript:void(0)" title="Logout" data-url="{{route('admin.logout')}}" id="logout-btn"><div class="menu-img"><img src="{{asset('assets/images/log-out.svg')}}" alt="Logout"></div>Logout</a></li>
 					</ul>
 				</aside>
@@ -39,64 +42,104 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <!-- Bootstrap Js -->
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+	<!-- toastr Js -->
+    <script src="{{asset('assets/toastr/toastr.min.js')}}"></script>
     <!-- Data table  -->
     <script src="{{asset('assets/datatables/jquery.dataTables.min.js')}}"></script>
     <!-- sweetalert2 Js -->
     <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
 	<script>
-		$(document).on("click", "#logout-btn", function (e) {
-			e.preventDefault();
-			var url = $(this).data("url");
-			swal
-			.fire({
-				title: "Logout?",
-				text: "Are you sure you want to logout",
-				icon: "question",
-				showCancelButton: !0,
-				confirmButtonText: "Yes, Logout",
-				cancelButtonText: "No, Cancel",
-				reverseButtons: !0,
-			})
-			.then(function (e) {
-				if (e.value === true) {
-				$.ajax({
-					type: "get",
-					url: url,
-					success: function (response) {
-					swal.fire({
-						icon: "success",
-						title: "Success!",
-						text: response.message,
-						confirmButtonText: "OK",
-					}).then((result) => {
-						if (
-						result.isConfirmed ||
-						result.dismiss === Swal.DismissReason.backdrop
-						) {
-						window.location.replace(response.url);
-						}
-					});
-					},
-					error: function (response) {
-					swal
-						.fire({
-						icon: "error",
-						title: "Error!",
-						text: response.responseJSON.message,
-						confirmButtonText: "OK",
-						})
-						.then((result) => {
-						if (
-							(result.isConfirmed ||
-							result.dismiss === Swal.DismissReason.backdrop) &&
-							response.responseJSON.url
-						) {
-							window.location.replace(response.responseJSON.url);
-						}
-						});
-					},
-				});
+		$(document).ready(function(){
+			toastr.options = {
+				'closeButton': true,
+				'debug': false,
+				'newestOnTop': false,
+				'progressBar': false,
+				'positionClass': 'toast-top-right',
+				'preventDuplicates': false,
+				'showDuration': '1000',
+				'hideDuration': '1000',
+				'timeOut': '5000',
+				'extendedTimeOut': '1000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
+
+			@if(Session::has('message'))
+				var type = "{{ Session::get('alert-type', 'info') }}";
+			
+				switch (type) {
+					case 'info':
+						toastr.info("{{ Session::get('message') }}", 'Info!');
+						break;
+
+					case 'warning':
+						toastr.warning("{{ Session::get('message') }}", 'Warning!');
+						break;
+					case 'success':
+						toastr.success("{{ Session::get('message') }}", 'Success!');
+						break;
+					case 'error':
+						toastr.error("{{ Session::get('message') }}", 'Error');
+						break;
 				}
+			@endif
+			$(document).on("click", "#logout-btn", function (e) {
+				e.preventDefault();
+				var url = $(this).data("url");
+				swal
+				.fire({
+					title: "Logout?",
+					text: "Are you sure you want to logout",
+					icon: "question",
+					showCancelButton: !0,
+					confirmButtonText: "Yes, Logout",
+					cancelButtonText: "No, Cancel",
+					reverseButtons: !0,
+				})
+				.then(function (e) {
+					if (e.value === true) {
+					$.ajax({
+						type: "get",
+						url: url,
+						success: function (response) {
+						swal.fire({
+							icon: "success",
+							title: "Success!",
+							text: response.message,
+							confirmButtonText: "OK",
+						}).then((result) => {
+							if (
+							result.isConfirmed ||
+							result.dismiss === Swal.DismissReason.backdrop
+							) {
+							window.location.replace(response.url);
+							}
+						});
+						},
+						error: function (response) {
+						swal
+							.fire({
+							icon: "error",
+							title: "Error!",
+							text: response.responseJSON.message,
+							confirmButtonText: "OK",
+							})
+							.then((result) => {
+							if (
+								(result.isConfirmed ||
+								result.dismiss === Swal.DismissReason.backdrop) &&
+								response.responseJSON.url
+							) {
+								window.location.replace(response.responseJSON.url);
+							}
+							});
+						},
+					});
+					}
+				});
 			});
 		});
 	</script>

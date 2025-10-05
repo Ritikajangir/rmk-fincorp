@@ -7,6 +7,8 @@
 
 	<!-- Bootstrap.css -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+	<!-- toastr css -->
+    <link rel="stylesheet" href="{{asset('assets/toastr/toastr.min.css')}}">
 
 	<!-- Main.css -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css')}}">
@@ -71,7 +73,50 @@
 	<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 	<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+	<!-- toastr Js -->
+    <script src="{{asset('assets/toastr/toastr.min.js')}}"></script>
 	<script src="{{asset('assets/js/custom.js')}}"></script>
+	<script>
+		$(document).ready(function(){
+			toastr.options = {
+				'closeButton': true,
+				'debug': false,
+				'newestOnTop': false,
+				'progressBar': false,
+				'positionClass': 'toast-top-right',
+				'preventDuplicates': false,
+				'showDuration': '1000',
+				'hideDuration': '1000',
+				'timeOut': '5000',
+				'extendedTimeOut': '1000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
+
+			@if(Session::has('message'))
+				var type = "{{ Session::get('alert-type', 'info') }}";
+			
+				switch (type) {
+					case 'info':
+						toastr.info("{{ Session::get('message') }}", 'Info!');
+						break;
+
+					case 'warning':
+						toastr.warning("{{ Session::get('message') }}", 'Warning!');
+						break;
+					case 'success':
+						toastr.success("{{ Session::get('message') }}", 'Success!');
+						break;
+					case 'error':
+						toastr.error("{{ Session::get('message') }}", 'Error');
+						break;
+				}
+			@endif
+		});
+	</script>
+	@yield('scripts')
 	<!-- Scripts End -->
     </body>
 </html>
