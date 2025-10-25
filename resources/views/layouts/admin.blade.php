@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>{{config('app.name')}} | @yield('title')</title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<link href="images/fav-icon.png" rel="icon">
 
@@ -27,9 +28,12 @@
 					<a href="javascript:void(0)" title="logo" class="sidebar-logo"><img src="{{asset('assets/images/logo.png')}}" alt="logo" class="img-fluid"></a>
 					<h6>WELCOME</h6>
 					<ul class="nav-items">
-						<li><a href="dashboard.html" title="Dashboard" class="active"><div class="menu-img"><img src="{{asset('assets/images/dashaboard.svg')}}" alt="Dashboard"></div>Dashboard</a></li>
-						<li><a href="{{route('admin.branch.index')}}" title="Branches"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Branches"></div>Branches</a></li>
-						<li><a href="{{route('admin.pages.index')}}" title="Pages"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Pages"></div>Pages</a></li>
+						<li><a href="{{route('admin.home')}}" title="Dashboard" class="{{ request()->is('admin') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/dashaboard.svg')}}" alt="Dashboard"></div>Dashboard</a></li>
+						<li><a href="{{route('admin.branch.index')}}" title="Branches" class="{{ request()->is('admin/branch') || request()->is('admin/branch/*') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Branches"></div>Branches</a></li>
+						<li><a href="{{route('admin.pages.index')}}" title="Pages" class="{{ request()->is('admin/pages') || request()->is('admin/pages/*') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Pages"></div>Pages</a></li>
+						<li><a href="{{route('admin.general-settings')}}" title="General Settings" class="{{ request()->is('admin/general-settings') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Profile"></div>General Settings</a></li>
+						<li><a href="{{route('admin.testimonials.index')}}" title="Testimonials" class="{{ request()->is('admin/testimonials') || request()->is('admin/testimonials/*') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Profile"></div>Testimonials</a></li>
+						<li><a href="{{route('admin.team-members.index')}}" title="Team Members" class="{{ request()->is('admin/team-members') || request()->is('admin/team-members/*') ? 'active' : '' }}"><div class="menu-img"><img src="{{asset('assets/images/brand.svg')}}" alt="Profile"></div>Team Members</a></li>
 						<li><a href="javascript:void(0)" title="Logout" data-url="{{route('admin.logout')}}" id="logout-btn"><div class="menu-img"><img src="{{asset('assets/images/log-out.svg')}}" alt="Logout"></div>Logout</a></li>
 					</ul>
 				</aside>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Mail\ContactSubmissionMail;
 use App\Models\Branch;
 use App\Models\ContactUsSubmission;
+use App\Models\Page;
+use App\Models\TeamMember;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -28,7 +31,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $testimonials = Testimonial::where('status', 1)->get();
+        $teamMembers = TeamMember::where('status', 1)->get();
+        return view('home', compact('testimonials', 'teamMembers'));
     }
 
     public function contactUs() 
@@ -74,13 +79,10 @@ class HomeController extends Controller
         return response()->json(['message' => 'Submission successful. Thank you!']);
     }
 
-    public function request()
+    public function pages($slug)
     {
-        return view('request');
-    }
-
-    public function receive()
-    {
-        return view('receive');
+        $slugPage = Page::where('slug', $slug)->first();
+        if(!$slugPage) abort(404);
+        return view('page', compact('slugPage'));
     }
 }

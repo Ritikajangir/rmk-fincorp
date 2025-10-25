@@ -42,6 +42,6 @@
 		</svg>Back / Cancel</a>
 	</div>
 	<div class="save_btn">
-		<button type="submit" class="nbtn" id="savePageBtn">Save</button>
+		<button type="submit" class="nbtn" id="savePageBtn">{{ isset($page) ? 'Update' : 'Save' }}</button>
 	</div>
 </div>

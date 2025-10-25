@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{config('app.name')}} | @yield('title')</title>
+	<title>{{ $settings->site_name }} | @yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . $settings->favicon) }}">
 
 	<!-- Bootstrap.css -->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -30,7 +31,7 @@
 	<header class="main-header position-relative">
 		<nav class="navbar navbar-expand-lg">
 		  	<div class="container">
-			    <a class="navbar-brand p-0 me-0 nav-logo" href="index.html"><img src="{{asset('assets/images/logo.png')}}" class="img-fluid" alt="" title="Armor" /></a>
+			    <a class="navbar-brand p-0 me-0 nav-logo" href="{{route('home')}}"><img src="{{ asset('storage/' . $settings->logo) }}" class="img-fluid" alt="" title="Armor" /></a>
 			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			      <span class="navbar-toggler-icon"></span>
 			      <span class="navbar-toggler-icon"></span>
@@ -39,22 +40,22 @@
 			    <div class="collapse navbar-collapse" id="navbarNav">
 				    <ul class="navbar-nav ms-auto align-items-center">
 				        <li class="nav-item">
-				          	<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+				          	<a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="{{route('home')}}">Home</a>
 				        </li>
 				        <li class="nav-item">
-				          	<a class="nav-link" href="about-us.html">About Us</a>
+				          	<a class="nav-link {{ request()->is('about-us') ? 'active' : '' }}" href="{{route('pages', 'about-us')}}">About Us</a>
 				        </li>
 				        <li class="nav-item">
-				          	<a class="nav-link" href="services.html">Services</a>
+				          	<a class="nav-link {{ request()->is('terms-conditions') ? 'active' : '' }}" href="{{route('pages', 'terms-conditions')}}">Terms & Conditions</a>
 				        </li>
 				        <li class="nav-item">
-				          	<a class="nav-link" href="#">Blog</a>
+				          	<a class="nav-link {{ request()->is('contact-us') ? 'active' : '' }}" href="{{route('contact-us')}}">Contact Us</a>
 				        </li>
 				        <li class="nav-item">
-				          	<a class="nav-link" href="{{route('contact-us')}}">Contact Us</a>
+				          	<a class="nav-link {{ request()->is('charges') ? 'active' : '' }}" href="{{route('pages', 'charges')}}">Charges</a>
 				        </li>
 				        <li class="nav-item btn-end">
-				          	<a class="btn btn-primary" href="contact-us.html">Get In Touch
+				          	<a class="btn btn-primary" href="{{route('contact-us')}}">Get In Touch
 					          	<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1 8H18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 									<path d="M11 1L18 8L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

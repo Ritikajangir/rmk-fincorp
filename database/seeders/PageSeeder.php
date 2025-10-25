@@ -19,6 +19,7 @@ class PageSeeder extends Seeder
             'Disclaimer Policy',
             'Privacy Policy',
             'Terms & Conditions',
+            'Charges'
         ];
 
         foreach ($pages as $title) {

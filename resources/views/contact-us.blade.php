@@ -32,8 +32,7 @@
 								</svg>
 							</div>
 							<div class="contact-subtitle text-gradient-primary">Contact Number</div>
-							<a href="#">+ 91 9887XXXXX</a>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+							<a href="tel:{{ $settings->phone }}">{{$settings->phone}}</a>
 						</div>
 					</div>
 				</div>
@@ -47,8 +46,7 @@
 								</svg>
 							</div>
 							<div class="contact-subtitle text-gradient-primary">Contact Email</div>
-							<a href="#">rmkfincorp@gmail.com</a>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+							<a href="mailto:{{ $settings->email }}">{{$settings->email}}</a>
 						</div>
 					</div>
 				</div>
