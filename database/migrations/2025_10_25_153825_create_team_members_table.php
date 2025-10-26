@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
             $table->integer('sort_order')->default(0); 
             $table->boolean('status')->default(true);
             $table->timestamps();

@@ -43,6 +43,7 @@ class TeamMemberController extends Controller
             'facebook' => 'nullable|url|max:255',
             'twitter' => 'nullable|url|max:255',
             'linkedin' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -93,6 +94,7 @@ class TeamMemberController extends Controller
             'facebook' => 'nullable|url|max:255',
             'twitter' => 'nullable|url|max:255',
             'linkedin' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -104,7 +106,7 @@ class TeamMemberController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('image')) {
-            if ($teamMember->image && Storage::disk('image')->exists($teamMember->image)) {
+            if ($teamMember->image && Storage::disk('public')->exists($teamMember->image)) {
                 Storage::disk('public')->delete($teamMember->image);
             }
             $data['image'] = $request->file('image')->store('team-members', 'public');

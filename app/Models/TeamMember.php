@@ -20,6 +20,7 @@ class TeamMember extends Model
         'facebook',
         'twitter',
         'linkedin',
+        'instagram',
         'sort_order',
         'status',
     ];

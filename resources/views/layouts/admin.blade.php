@@ -6,7 +6,7 @@
 	<title>{{config('app.name')}} | @yield('title')</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<link href="images/fav-icon.png" rel="icon">
+	<link href="{{asset('assets/images/fav-icon.png')}}" rel="icon">
 
     <link rel="stylesheet" href="{{asset('assets/datatables/jquery.dataTables.min.css')}}">
 	<!-- Bootstrap css -->

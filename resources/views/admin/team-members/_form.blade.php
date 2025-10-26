@@ -58,6 +58,12 @@
 				<input type="text" class="form-control" name="linkedin" value="{{ isset($teamMember) && $teamMember ? $teamMember['linkedin'] : '' }}" placeholder="Enter LinkedIn URL">
 			</div>
 		</div>
+		<div class="col-12 col-lg-6">
+			<div class="form-group">
+				<label>Instagram Link</label>
+				<input type="text" class="form-control" name="instagram" value="{{ isset($teamMember) && $teamMember ? $teamMember['instagram'] : '' }}" placeholder="Enter Instagram URL">
+			</div>
+		</div>
         <div class="col-12 col-lg-2 check-list default-check step_form_checkbox">
             <div class="flex">
                 <span><div class="step-form-checkbox-title">Status</div></span>
