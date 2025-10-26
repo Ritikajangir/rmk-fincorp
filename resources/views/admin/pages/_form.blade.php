@@ -7,7 +7,7 @@
 				<input type="text" class="form-control" name="title" id="title" placeholder="Enter Name" value="{{ isset($page) && $page ? $page['title'] : ''}}">
 			</div>
 		</div>
-        <div class="col-12 col-lg-2 check-list default-check step_form_checkbox">
+        <div class="col-12 col-lg-2 check-list default-check step_form_checkbox mb-2">
             <div class="flex">
                 <span><div class="step-form-checkbox-title">Status</div></span>
             </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12 mt-3">
             <div class="form-group">
                 <textarea class="form-control summernote" name="summernote" id="summernote">{{ isset($page) && $page ? $page['content'] : '' }}</textarea>
             </div>

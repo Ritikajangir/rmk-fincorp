@@ -142,6 +142,7 @@
             </div>
 
             <div class="configuration_btns">
+                <div></div>
                 <div class="save_btn">
                     <button type="submit" class="nbtn" id="saveGeneralSettingBtn">Update</button>
                 </div>

@@ -116,7 +116,7 @@ class TestimonialDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->addClass('datatable_action no-gutters row'),
+                  ->addClass('datatable_action no-gutters'),
         ];
     }
 
