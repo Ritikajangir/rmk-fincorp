@@ -14,8 +14,8 @@
     <div class="mb-3">
         <label for="loginPassword">Password<span class="mailstar" style="color: red;">*</span></label>
         <div class="input-password-wrap">
-            <input type="password" name="password" value="" placeholder="Enter Password" class="form-control" id="loginPassword" name="loginPassword">
-            <i class="fa fa-eye-slash" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+            <input type="password" name="password" value="" placeholder="Enter Password" class="form-control" id="password" name="loginPassword">
+            <i class="fa fa-eye-slash toggle-password" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
         </div>
     </div>
     <div class="mb-3 form-check">

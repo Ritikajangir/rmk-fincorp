@@ -2,7 +2,6 @@
 @section('title', 'Branch List')
 @section('content')
 
-<div class="dash-right-area">
     <div class="main-title add_brand_wrapper">
         <div class="dash-title">
             <h2>Branch List</h2>
@@ -13,48 +12,7 @@
                     <a href="javascript:void(0)" class="nbtn gap-2" id="addBranchBtn"><i class="fi fi-rr-plus"></i> Add Branch</a>
                 </div>
             </div>
-            <div class="dropdown user-dropdown desktop-mode">
-                <button class="dropdown-toggle ms-auto p-0" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                    aria-expanded="false" tabIndex="0">
-                    <div class="img-user">
-                        AU
-                    </div>
-                    <div class="name-dta d-flex align-items-end">
-                        <div class="welcome-user">
-                            <span class="welcome">Welcome</span>
-                            <span class="user-name-title">Admin User</span>
-                        </div>
-                        <span class="arrow-icon ms-2">
-                            <svg tabindex="-1" width="10" height="5" viewBox="0 0 14 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" tabindex="-1">
-                                <path tabindex="-1" d="M13.002 7L7.00195 0.999999L1.00195 7" stroke="#102846" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" tabindex="-1"></path>
-                            </svg>
-                        </span>
-                    </div>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <div class="dropdown-item" tabindex="-1"><span>Username:</span> Admin User</div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item" tabindex="-1"><span>Email:</span> admin.his@example.com</div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item" tabindex="-1"><span>Role:</span> admin</div>
-                        </li>
-                        <li>
-                            <a class="dropdown-item logout-item-anchor" href="javascript:void(0)" title="Logout" id="logout-btn" tabIndex="0">
-                                <span>Logout </span>
-                                <div class="menu-img">
-                                    <img src="{{asset('assets/images/log-out.svg')}}" alt="Logout">
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            @include('layouts.header-dropdown')
         </div>
     </div>
 
@@ -66,54 +24,54 @@
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="addBranchForm">
-      <input type="hidden" id="branch_id" name="branch_id" value="">
-      <div class="modal-content">
+    
+    <div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="addBranchForm">
+        <input type="hidden" id="branch_id" name="branch_id" value="">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="addBranchModalLabel">Add Branch</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @csrf
+                <div class="mb-3">
+                    <label for="branchName" class="form-label">Name<span class="mailstar" style="color: red;">*</span></label>
+                    <input type="text" class="form-control" id="branchName" name="name" required placeholder="Enter Name">
+                </div>
+                <div class="mb-3">
+                    <label for="branchAddress" class="form-label">Address<span class="mailstar" style="color: red;">*</span></label>
+                    <textarea class="form-control" id="branchAddress" name="address" required placeholder="Enter Address"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn submit-btn" id="saveBranchBtn">Save Branch</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    <!-- Branch Details Modal -->
+    <div class="modal fade" id="branchDetailsModal" tabindex="-1" aria-labelledby="branchDetailsLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addBranchModalLabel">Add Branch</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="branchDetailsLabel">Branch Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            @csrf
-            <div class="mb-3">
-                <label for="branchName" class="form-label">Name<span class="mailstar" style="color: red;">*</span></label>
-                <input type="text" class="form-control" id="branchName" name="name" required placeholder="Enter Name">
-            </div>
-            <div class="mb-3">
-                <label for="branchAddress" class="form-label">Address<span class="mailstar" style="color: red;">*</span></label>
-                <textarea class="form-control" id="branchAddress" name="address" required placeholder="Enter Address"></textarea>
-            </div>
+            <p><strong>Name:</strong> <span id="branchNameShow"></span></p>
+            <p><strong>Address:</strong> <span id="branchAddressShow"></span></p>
+            <p><strong>Created At:</strong> <span id="branchCreatedAt"></span></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary submit-btn" id="saveBranchBtn">Save Branch</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- Branch Details Modal -->
-<div class="modal fade" id="branchDetailsModal" tabindex="-1" aria-labelledby="branchDetailsLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="branchDetailsLabel">Branch Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Name:</strong> <span id="branchNameShow"></span></p>
-        <p><strong>Address:</strong> <span id="branchAddressShow"></span></p>
-        <p><strong>Created At:</strong> <span id="branchCreatedAt"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
 
 @endsection
 

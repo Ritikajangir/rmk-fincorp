@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController
 {
@@ -138,6 +139,45 @@ class HomeController
         return response()->json([
             'success' => true,
             'message' => 'Home Page Content updated successfully!',
+        ]);
+    }
+    
+    public function changePassword()
+    {
+    	return view('admin.change-password');
+    }
+
+    public function changePasswordUpdate(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:6',
+            'new_confirm_password' => 'required|same:new_password',
+        ]);
+
+        $admin = auth()->guard('admin')->user();
+
+        if (!$admin) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized access.',
+            ], 401);
+        }
+
+        if (!Hash::check($request->old_password, $admin->password)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Old password does not match our records.',
+            ], 422);
+        }
+
+        $admin->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Password changed successfully.',
         ]);
     }
 }

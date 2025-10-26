@@ -39,7 +39,17 @@
 					</ul>
 				</aside>
 			</div>
-			@yield('content')
+			<div class="dash-right-area">
+				<div class="mobile-header d-md-none">
+					<div class="mob-logo">
+						<a href="javascript:void(0)" title="logo"><img src="{{asset('assets/images/logo.png')}}" alt="logo" class="img-fluid"></a>
+					</div>
+					<div class="humberger-icon">
+						<img src="{{asset('assets/images/humberger-icon.svg')}}" alt="humberger-icon">
+					</div>
+				</div>
+				@yield('content')
+			</div>
 		</div>
 	</section>
 
@@ -91,6 +101,9 @@
 						break;
 				}
 			@endif
+			$(".humberger-icon").click(function(){
+				$(".dash-section").toggleClass("sidebar-open");
+			});
 			$(document).on("click", "#logout-btn", function (e) {
 				e.preventDefault();
 				var url = $(this).data("url");

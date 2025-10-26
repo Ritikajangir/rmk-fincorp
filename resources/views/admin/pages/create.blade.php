@@ -4,10 +4,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.css"/>
 @endsection
 @section('content')
-<div class="dash-right-area">
     <div class="main-title add_brand_wrapper">
         <div class="dash-title">
             <h2>Add Page</h2>
+        </div>
+        <div class="header_profile">
+            @include('layouts.header-dropdown')
         </div>
     </div>
     <div class="data-fieldtable">
@@ -18,7 +20,6 @@
             </form>
         </div>
     </div>
-</div>
 @endsection
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.js"></script>

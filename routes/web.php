@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::group(['middleware' => ['auth.admin','preventBackHistory']], function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+        Route::get('change-password', [AdminHomeController::class, 'changePassword'])->name('change-password');
+        Route::post('change-password/update', [AdminHomeController::class, 'changePasswordUpdate'])->name('change-password.update');
         Route::get('general-settings', [AdminHomeController::class, 'generalSetting'])->name('general-settings');
         Route::post('general-settings/update', [AdminHomeController::class, 'generalSettingUpdate'])->name('general-settings.update');
         Route::get('home-page-content', [AdminHomeController::class, 'homePageContent'])->name('home-page-content');

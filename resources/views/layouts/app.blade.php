@@ -8,6 +8,7 @@
 
         <link href="images/fav-icon.png" rel="icon">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <!-- Bootstrap css -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 

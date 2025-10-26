@@ -1,10 +1,12 @@
 @extends('layouts.admin')
 @section('title', __('Home Page Content'))
 @section('content')
-<div class="dash-right-area">
     <div class="main-title add_brand_wrapper">
         <div class="dash-title">
             <h2>Home Page Content</h2>
+        </div>
+        <div class="header_profile">
+            @include('layouts.header-dropdown')
         </div>
     </div>
     <div class="data-fieldtable">
@@ -187,7 +189,6 @@
         </form>
     </div>
 
-</div>
 @endsection
 @section('scripts')
 <script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>

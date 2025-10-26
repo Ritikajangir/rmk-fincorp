@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 @section('title', 'Show Team Member')
 @section('content')
-<div class="dash-right-area">
     <div class="main-title add_brand_wrapper">
         <div class="dash-title">
             <h2>Show Team Member</h2>
         </div>
-        <div class="add_brand">
-            <a href="{{route('admin.team-members.index')}}" class="nbtn gap-2"><i class="fi fi-rr-arrow-left"></i> Back</a>
+        <div class="header_profile">
+            <div class="add_brand">
+                <a href="{{route('admin.team-members.index')}}" class="nbtn gap-2"><i class="fi fi-rr-arrow-left"></i> Back</a>
+            </div>
+            @include('layouts.header-dropdown')
         </div>
     </div>
     <div class="row">
@@ -92,5 +94,4 @@
             <p>{{ $teamMember->status ? 'Active' : 'Inactive' }} </p>
         </div>
     </div>
-</div>
 @endsection

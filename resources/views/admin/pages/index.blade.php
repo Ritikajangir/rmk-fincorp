@@ -2,13 +2,15 @@
 @section('title', 'Page List')
 @section('content')
 
-<div class="dash-right-area">
     <div class="main-title add_brand_wrapper">
         <div class="dash-title">
             <h2>Page List</h2>
         </div>
-        <div class="add_brand">
-            <a href="{{route('admin.pages.create')}}" class="nbtn gap-2"><i class="fi fi-rr-plus"></i> Add Page</a>
+        <div class="header_profile">
+            <div class="add_brand">
+                <a href="{{route('admin.pages.create')}}" class="nbtn gap-2"><i class="fi fi-rr-plus"></i> Add Page</a>
+            </div>
+            @include('layouts.header-dropdown')
         </div>
     </div>
     <div class="data-fieldtable">
@@ -19,7 +21,6 @@
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 

@@ -73,7 +73,6 @@ class BranchDataTable extends DataTable
                     ->parameters([
                         'stateSave' => true,
                         'buttons' => ['pageLength'],
-                        'lengthMenu' => [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000]],
                         'responsive' => true,
                         'autoWidth' => false,
                         'width' => '100%',
