@@ -2,14 +2,14 @@
 @section('title', 'Home')
 @section('content')
     <!-- Home Banner -->
-	<section class="home-banner">
+	<section class="home-banner" style="background-image: url('{{ asset(($homePageContent?->hero_image) ? 'storage/' . $homePageContent->hero_image : 'assets/images/banner-bg.jpg') }}');">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-lg-6">
 					<div class="home-banner-content">
-						<div class="sub-title">Trusted Financial Guidance</div>
-						<h1>Secure Your Financial Future</h1>
-						<p>We provide expert financial planning, investment strategies, and wealth management solutions to help you achieve long-term stability and growth.</p>
+						<div class="sub-title">{{ $homePageContent->first_heading ?? '' }}</div>
+						<h1>{{ $homePageContent->main_heading ?? '' }}</h1>
+						<p>{{ $homePageContent->sub_heading ?? '' }}</p>
 						<div class="button-block">
 							<a class="btn btn-primary" href="{{route('contact-us')}}">Get In Touch
 					          	<svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg')}}">
@@ -37,15 +37,8 @@
 				<div class="col-12 col-lg-6">
 					<div class="global-heading">
 						<span class="heading-sub-title text-gradient-primary">About Us</span>
-						<h3>What’s Our Specialties</h3>
-						<p>
-							RMK Fincorp Private Limited was incorporated in 1995 and Business has been keeping since 2017. 
-							Company has been classified by RBI under loan Company.Main focus area of the company was to provide finance 
-							in the interiorrural segments where getting bank finance was not easy. Company startedfinancing of two wheelers 
-							to individuals in the rural areas of JhunJhunu, district. Gradually company has also plan to expand its business in 
-							other district of Rajasthan. Apart from USED CAR/CV/MUV/HUV/LCV finance company has diversified its activities to all 
-							kind of vehicleloans, MSME, Loan against Property,and EV etc
-						</p>
+						<h3>{{ $homePageContent->about_us_heading ?? '' }}</h3>
+						<p>{{ $homePageContent->about_us_content ?? '' }}</p>
 
 						<div class="mt-4">
 							<a class="btn btn-primary" href="{{route('pages', 'about-us')}}">
@@ -60,7 +53,7 @@
 				</div>
 				<div class="col-12 col-lg-6">
 					<div class="about-block position-relative">
-						<img src="{{asset('assets/images/about-us.jpg')}}" class="img-fluid rounded-lg" alt="" />
+						<img src="{{ asset(($homePageContent?->about_us_image) ? 'storage/' . $homePageContent->about_us_image : 'assets/images/about-us.jpg') }}" class="img-fluid rounded-lg" alt="" />
 					</div>
 				</div>
 			</div>
@@ -72,7 +65,7 @@
 	<section class="emergency-contact">
 		<div class="container">
 			<div class="emergency-contact-img">
-				<img src="{{asset('assets/images/help.jpg')}}" class="img-fluid" alt="" />
+				<img src="{{ asset(($homePageContent?->our_mission_image) ? 'storage/' . $homePageContent->our_mission_image : 'assets/images/help.jpg') }}" class="img-fluid" alt="" />
 			</div>
 			<div class="row">
 				<div class="col-12 col-lg-6"></div>
@@ -80,8 +73,8 @@
 					<div class="emergency-content">
 						<div class="global-heading">
 							<span class="heading-sub-title">Our Mission</span>
-							<h3>Financing Growth, Empowering Futures</h3>
-							<p>RMK Fincorp provides affordable loans for vehicles, MSMEs, and property, with a focus on rural and emerging markets. We promote financial inclusion, support entrepreneurship, and drive sustainable growth.</p>
+							<h3>{{ $homePageContent->our_mission_main_heading ?? '' }}</h3>
+							<p>{{ $homePageContent->our_mission_sub_heading ?? '' }}</p>
 						</div>
 						<ul class="contact-desc list-unstyled">
 							<li>24/7 Financial Assistance</li>
@@ -117,8 +110,8 @@
 				<div class="col-12 col-lg-6">
 					<div class="global-heading">
 						<span class="heading-sub-title text-gradient-primary">Why Choose Us</span>
-						<h3>What’s Our Specialties</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</p>
+						<h3>{{ $homePageContent->choose_us_main_heading ?? '' }}</h3>
+						<p>{{ $homePageContent->choose_us_sub_heading ?? '' }}</p>
 					</div>
 					<div class="our-specialist">
 						<div class="our-specialist-item">
@@ -153,7 +146,7 @@
 				</div>
 				<div class="col-12 col-lg-6">
 					<div class="video-block position-relative">
-						<img src="{{asset('assets/images/choose-us.jpg')}}" class="img-fluid" alt="" />
+						<img src="{{ asset(($homePageContent?->choose_us_image) ? 'storage/' . $homePageContent->choose_us_image : 'assets/images/choose-us.jpg') }}" class="img-fluid" alt="" />
 						<a href="" class="play"><img src="{{asset('assets/images/play.svg')}}" class="img-fluid" alt="" /></a>
 					</div>
 				</div>
@@ -210,10 +203,8 @@
 				<div class="col-12 col-md-12 col-lg-12 col-xl-7">
 					<div class="global-heading">
 						<span class="heading-sub-title">Our Team</span>
-						<h3>Meet Our Expert Team</h3>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, unde voluptates? Aut non aliquid dignissimos quibusdam molestias sit dolores nihil unde fugit, amet aspernatur sequi ad voluptate! Magni, obcaecati nisi!
-						</p>
+						<h3>{{ $homePageContent->our_team_main_heading ?? '' }}</h3>
+						<p>{{ $homePageContent->our_team_sub_heading ?? '' }}</p>
 					</div>
 				</div>
 			</div>
@@ -289,8 +280,8 @@
 				<div class="col-12 col-md-12 col-lg-12 col-xl-7">
 					<div class="global-heading center">
 						<span class="heading-sub-title text-gradient-primary">Testimonial</span>
-						<h3>What Our Clients Says</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+						<h3>{{ $homePageContent->testimonial_main_heading ?? '' }}</h3>
+						<p>{{ $homePageContent->testimonial_sub_heading ?? '' }}</p>
 					</div>
 				</div>
 			</div>

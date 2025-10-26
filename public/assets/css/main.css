@@ -316,7 +316,6 @@ section:not(:first-of-type){
 .home-banner {
 	position: relative;
     padding: 65px 0;
-    background-image:url(../images/banner-bg.jpg);
     background-position: top right;
     background-size: cover;
     background-repeat: no-repeat;

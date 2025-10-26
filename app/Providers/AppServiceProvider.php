@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\GeneralSetting;
+use App\Models\HomePageContent;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Page;
@@ -28,8 +29,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('*', function ($view) {
-            $settings = GeneralSetting::first(); // Assuming only one row for settings
+            $settings = GeneralSetting::first(); 
             $view->with('settings', $settings);
+        });
+
+        View::composer('*', function ($view) {
+            $homePageContent = HomePageContent::first();
+            $view->with('homePageContent', $homePageContent);
         });
     }
 }

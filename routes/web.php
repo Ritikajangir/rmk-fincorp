@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('home');
         Route::get('general-settings', [AdminHomeController::class, 'generalSetting'])->name('general-settings');
         Route::post('general-settings/update', [AdminHomeController::class, 'generalSettingUpdate'])->name('general-settings.update');
+        Route::get('home-page-content', [AdminHomeController::class, 'homePageContent'])->name('home-page-content');
+        Route::post('home-page-content/update', [AdminHomeController::class, 'homePageContentUpdate'])->name('home-page-content.update');
         Route::resource('branch', BranchController::class);
         Route::resource('pages', PageController::class);
         Route::resource('testimonials', TestimonialController::class);

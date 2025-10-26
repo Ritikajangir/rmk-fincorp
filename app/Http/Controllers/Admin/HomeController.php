@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\GeneralSetting;
+use App\Models\HomePageContent;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -67,6 +68,76 @@ class HomeController
         return response()->json([
             'success' => true,
             'message' => 'General settings updated successfully!',
+        ]);
+    }
+
+    public function homePageContent()
+    {
+    	return view('admin.home-page-content');
+    }
+
+    public function homePageContentUpdate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'main_heading' => 'required|string|max:255',
+            'hero_image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:4096',
+            'about_us_heading' => 'required|string|max:255',
+            'about_us_image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:4096',
+            'our_mission_main_heading' => 'required|string|max:255',
+            'our_mission_image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:4096',
+            'choose_us_main_heading' => 'required|string|max:255',
+            'choose_us_image' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:4096',
+            'our_team_main_heading' => 'required|string|max:255',
+            'testimonial_main_heading' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $setting = HomePageContent::first() ?? new HomePageContent();
+
+        $data = $request->except(['hero_image', 'about_us_image', 'our_mission_image', 'choose_us_image']);
+
+        if ($request->hasFile('hero_image')) {
+            if ($setting->hero_image && Storage::disk('public')->exists($setting->hero_image)) {
+                Storage::disk('public')->delete($setting->hero_image);
+            }
+
+            $data['hero_image'] = $request->file('hero_image')->store('home-page/hero_image', 'public');
+        }
+
+        if ($request->hasFile('about_us_image')) {
+            if ($setting->about_us_image && Storage::disk('public')->exists($setting->about_us_image)) {
+                Storage::disk('public')->delete($setting->about_us_image);
+            }
+
+            $data['about_us_image'] = $request->file('about_us_image')->store('home-page/about_us_image', 'public');
+        }
+
+        if ($request->hasFile('our_mission_image')) {
+            if ($setting->our_mission_image && Storage::disk('public')->exists($setting->our_mission_image)) {
+                Storage::disk('public')->delete($setting->our_mission_image);
+            }
+
+            $data['our_mission_image'] = $request->file('our_mission_image')->store('home-page/our_mission_image', 'public');
+        }
+
+        if ($request->hasFile('choose_us_image')) {
+            if ($setting->choose_us_image && Storage::disk('public')->exists($setting->choose_us_image)) {
+                Storage::disk('public')->delete($setting->choose_us_image);
+            }
+
+            $data['choose_us_image'] = $request->file('choose_us_image')->store('home-page/choose_us_image', 'public');
+        }
+
+        $setting->fill($data)->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Home Page Content updated successfully!',
         ]);
     }
 }
