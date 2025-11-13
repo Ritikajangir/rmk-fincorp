@@ -77,8 +77,8 @@
 							<p>{{ $homePageContent->our_mission_sub_heading ?? '' }}</p>
 						</div>
 						<ul class="contact-desc list-unstyled">
-							<li>24/7 Financial Assistance</li>
-							<li>Emergency Loan Support – Call Anytime</li>
+							<li>Transparent, Hassle-Free Loan Experience</li>
+							<li>Personalized Support for Every Borrower</li>
 						</ul>
 						<div class="contact-box">
 							<a class="contact-box-item d-inline-flex align-items-center" href="tel:{{$settings->phone}}">
@@ -117,29 +117,29 @@
 						<div class="our-specialist-item">
 							<div class="item-icon"><img src="{{asset('assets/images/professional-staff.png')}}" class="img-fluid" alt=""></div>
 							<div class="item-content">
-								<h4>More Flexible Lending Criteria</h4>
-								<p>We tailor our lending options to suit diverse financial needs.</p>
+								<h4>Flexible Lending Criteria</h4>
+								<p>We customize our lending options to meet a wide range of financial needs, making financing accessible for everyone.</p>
 							</div>
 						</div>
 						<div class="our-specialist-item">
 							<div class="item-icon"><img src="{{asset('assets/images/engineering.png')}}" class="img-fluid" alt=""></div>
 							<div class="item-content">
-								<h4>Quicker Approval Processes</h4>
-								<p>Get faster approvals with our streamlined system.</p>
+								<h4>Fast Approval Process</h4>
+								<p>Benefit from our efficient and streamlined loan approvals, designed to get you funded quickly and hassle-free.</p>
 							</div>
 						</div>
 						<div class="our-specialist-item">
 							<div class="item-icon"><img src="{{asset('assets/images/solution.png')}}" class="img-fluid" alt=""></div>
 							<div class="item-content">
-								<h4>Personalized Solutions</h4>
-								<p>Customized financial plans designed just for you.</p>
+								<h4>Tailored Financial Solutions</h4>
+								<p>Receive personalized financial plans crafted specifically to match your goals and circumstances.</p>
 							</div>
 						</div>
 						<div class="our-specialist-item">
 							<div class="item-icon"><img src="{{asset('assets/images/savings-ratio.png')}}" class="img-fluid" alt=""></div>
 							<div class="item-content">
-								<h4>Less Intrest Rate</h4>
-								<p>Enjoy competitive rates to reduce your repayment burden.</p>
+								<h4>Competitive Interest Rates</h4>
+								<p>Enjoy attractive interest rates that help minimize your repayment amounts and maximize savings.</p>
 							</div>
 						</div>
 					</div>

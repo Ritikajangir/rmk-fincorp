@@ -19,7 +19,7 @@
 	</section>
 	<!-- Inner page common banner -->
 
-    <section class="content-pg">
+    <section class="content-pg dynamic-pages-content">
 		<div class="container">
 			<div class="row">
                 {!! $slugPage->content !!}

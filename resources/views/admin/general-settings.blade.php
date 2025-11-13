@@ -154,6 +154,7 @@
 @endsection
 @section('scripts')
 <script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+<script src="{{ asset('assets/js/additional-methods.min.js') }}"></script>
 <script>
     $(document).ready(function(){
         $('#generalSettingForm').validate({

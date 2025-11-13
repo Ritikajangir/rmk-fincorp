@@ -81,7 +81,7 @@ class HomeController extends Controller
 
     public function pages($slug)
     {
-        $slugPage = Page::where('slug', $slug)->first();
+        $slugPage = Page::where('slug', $slug)->where('status', 1)->first();
         if(!$slugPage) abort(404);
         return view('page', compact('slugPage'));
     }
