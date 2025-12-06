@@ -860,7 +860,7 @@ section:not(:first-of-type){
 .experts{
 	border: 1px solid var(--white);
 	border-radius: 10px;
-	padding: 15px;
+	padding: 14px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.05);
 }
 .experts-data {
@@ -895,7 +895,7 @@ section:not(:first-of-type){
 .occupation {
     display: block;
     margin-bottom: 20px;
-    line-height: 11px;
+    line-height: 20px;
     font-weight: var(--fw-600);
 }
 .social-icons a {
